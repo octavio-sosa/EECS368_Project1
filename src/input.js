@@ -1,4 +1,4 @@
 window.addEventListener('resize', () => {
-	canvas.width = window.innerWidth
-	canvas.height = window.innerHeight
+	cvs.width = window.innerWidth
+	cvs.height = window.innerHeight
 })
