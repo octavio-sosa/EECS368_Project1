@@ -1,6 +1,6 @@
 let cvs = document.querySelector('#canvas')
-cvs.width = window.innerWidth
-cvs.height = window.innerHeight
+cvs.width = window.innerWidth - window.innerWidth*0.02
+cvs.height = window.innerHeight - window.innerHeight*0.02
 let ctx = cvs.getContext('2d')
 let prevTime = 0
 
