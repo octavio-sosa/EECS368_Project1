@@ -21,7 +21,8 @@ class Ball {
   draw(ctx) {
     ctx.beginPath()
     ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2*Math.PI) 
-    ctx.fillStyle = '#e86ce0'
+    ctx.fillStyle = '#1645f5'
+    
     ctx.fill()
     ctx.closePath()
   }
