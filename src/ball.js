@@ -1,6 +1,6 @@
 class Ball {
-  constructor(paddle) {
-    this.paddle = paddle
+  constructor(game) {
+    this.game = game
     this.radius = 0
     this.pos = {
       x: 0,
@@ -12,7 +12,10 @@ class Ball {
 
   update(dt) {
     this.radius = cvs.width*cvs.height*0.0000175
-    this.reset()
+
+    if(this.game.state === GSTATE.TEE_OFF) {
+      this.reset()
+    }
   }
 
   draw(ctx) {
@@ -24,8 +27,9 @@ class Ball {
   }
 
   reset() {
-    this.pos.x = this.paddle.pos.x + this.paddle.width/2
-    this.pos.y = cvs.height - this.paddle.height - this.radius
+    let paddle = this.game.gameObjs[OBJ_KEYS.PADDLE_FLOOR]
+    this.pos.x = paddle.pos.x + paddle.width/2
+    this.pos.y = cvs.height - paddle.height - this.radius
     this.vel = cvs.width*cvs.height*0.0001
   }
 }
