@@ -6,15 +6,20 @@ class Ball {
       x: 0,
       y: 0
     }
-    this.vel = 0
+    this.vel = {
+      x: 0,
+      y: 0
+    }
     
   }
 
   update(dt) {
     this.radius = cvs.width*cvs.height*0.0000175
 
-    if(this.game.state === GSTATE.TEE_OFF) {
-      this.reset()
+    if(this.game.state === GSTATE.TEE) {
+      this.tee()
+    } else if(this.game.state = GSTATE.TEE_OFF) {
+      this.roam()
     }
   }
 
@@ -27,10 +32,17 @@ class Ball {
     ctx.closePath()
   }
 
-  reset() {
+  tee() {
     let paddle = this.game.gameObjs[OBJ_KEYS.PADDLE_FLOOR]
     this.pos.x = paddle.pos.x + paddle.width/2
     this.pos.y = cvs.height - paddle.height - this.radius
-    this.vel = cvs.width*cvs.height*0.0001
+  }
+
+  roam() {
+    this.vel.x = cvs.width*cvs.height*0.00001
+    this.vel.y = cvs.width*cvs.height*0.00001
+
+    this.pos.x += this.vel.x
+    this.pos.y -= this.vel.y
   }
 }

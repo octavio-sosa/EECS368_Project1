@@ -22,5 +22,5 @@ function renderGame(time) {
 	requestAnimationFrame(renderGame)
 }
 
-game.state = GSTATE.TEE_OFF
+game.state = GSTATE.TEE
 renderGame()

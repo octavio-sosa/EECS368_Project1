@@ -7,7 +7,13 @@ window.addEventListener('resize', () => {
 	cvs.height = window.innerHeight - window.innerHeight*0.02
 })
 
-window.addEventListener('mousemove', (m) => {
-	mouse.x = m.x,
-	mouse.y = m.y
+window.addEventListener('mousemove', e => {
+	mouse.x = e.x,
+	mouse.y = e.y
+})
+
+window.addEventListener('keydown', e => {
+  if(e.code == 'Space' && game.state === GSTATE.TEE) {
+    game.state = GSTATE.TEE_OFF   
+  }
 })

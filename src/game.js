@@ -4,8 +4,9 @@ const OBJ_KEYS = {
 
 const GSTATE = {
   MENU: 0,
-  TEE_OFF: 1,
-  RUNNING: 2
+  TEE: 1,
+  TEE_OFF: 2,
+  RUNNING: 3
 }
 
 class Game {
@@ -29,6 +30,7 @@ class Game {
 
   update(dt) {
     if(this.state === GSTATE.RUNNING ||
+    this.state === GSTATE.TEE ||
     this.state === GSTATE.TEE_OFF) {
       this.gameObjs.forEach(obj => obj.update(dt))
     }
