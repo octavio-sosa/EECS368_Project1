@@ -12,9 +12,7 @@ class Ball {
 
   update(dt) {
     this.radius = cvs.width*cvs.height*0.0000175
-    this.pos.x = this.paddle.pos.x + this.paddle.width/2
-    this.pos.y = cvs.height - this.paddle.height - this.radius
-    this.vel = cvs.width*cvs.height*0.0001
+    this.reset()
   }
 
   draw(ctx) {
@@ -23,5 +21,11 @@ class Ball {
     ctx.fillStyle = '#e86ce0'
     ctx.fill()
     ctx.closePath()
+  }
+
+  reset() {
+    this.pos.x = this.paddle.pos.x + this.paddle.width/2
+    this.pos.y = cvs.height - this.paddle.height - this.radius
+    this.vel = cvs.width*cvs.height*0.0001
   }
 }
