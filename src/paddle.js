@@ -15,7 +15,7 @@ class Paddle {
 		this.height = cvs.height*0.1
 
 		if(this.type == 'floor') {
-			this.pos.x = mouse.x
+			this.pos.x = mouse.x - this.width/2
 			this.pos.y = cvs.height-5
 		}
 	}
