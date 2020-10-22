@@ -21,12 +21,16 @@ class Game {
 		this.paddleLeft = new Paddle('leftWall')
 		this.paddleRight = new Paddle('rightWall')
     this.ball = new Ball(this)
+    this.bricks = []
+    this.brick = new Brick(this, {x: 10, y: 10}, '#e86ce0')
 
     this.gameObjs.push(this.paddleFloor)
 		this.gameObjs.push(this.paddleCeil)
 		this.gameObjs.push(this.paddleLeft)
 		this.gameObjs.push(this.paddleRight)
-    this.gameObjs.push(this.ball)}
+    this.gameObjs.push(this.ball)
+    this.gameObjs.push(this.brick)
+  }
 
   update(dt) {
     if(this.state === GSTATE.RUNNING ||
