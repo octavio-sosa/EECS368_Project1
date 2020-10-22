@@ -14,7 +14,8 @@ class Ball {
   }
 
   update(dt) {
-    this.radius = cvs.width*cvs.height*0.0000175
+    this.radius = cvs.width*cvs.height*0.000005
+    //this.radius = cvs.width*cvs.height*0.0000175
 
     if(this.game.state === GSTATE.TEE) {
       this.tee()

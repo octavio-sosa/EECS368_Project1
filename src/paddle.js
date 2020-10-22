@@ -11,8 +11,10 @@ class Paddle {
 	}
 
 	update(dt) {
-		this.width = cvs.width*0.125
-		this.height = cvs.height*0.015
+		this.width = cvs.width*0.05
+		this.height = cvs.height*0.0075
+		//this.width = cvs.width*0.125
+		//this.height = cvs.height*0.015
 		this.movePaddle()
 
 	}
