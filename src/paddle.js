@@ -11,19 +11,21 @@ class Paddle {
 	}
 
 	update(dt) {
-		this.width = cvs.width*0.05
-		this.height = cvs.height*0.0075
+		if (this.type == 'leftWall' || this.type == 'rightWall') {
+			this.height = cvs.width*0.05
+      this.width = cvs.height*0.0075
+		} else {
+      this.width = cvs.width*0.05
+      this.height = cvs.height*0.0075
+    }
+
 		this.movePaddle()
 
 	}
 
 	draw(ctx) {
 		ctx.fillStyle = '#2b0719'
-		if(this.type == 'floor' || this.type == 'ceiling') {
-			ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height)
-		} else if (this.type == 'leftWall' || this.type == 'rightWall') {
-			ctx.fillRect(this.pos.x, this.pos.y, this.height, this.width)
-		}
+    ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height)
 	}
 
 	movePaddle() {
@@ -35,10 +37,10 @@ class Paddle {
 			this.pos.y = 0
 		} else if (this.type == 'leftWall') {
 			this.pos.x = 0
-			this.pos.y = mouse.y - this.width/2
+			this.pos.y = mouse.y - this.height/2
 		} else if (this.type == 'rightWall') {
-			this.pos.x = cvs.width - this.height
-			this.pos.y = mouse.y - this.width/2
+			this.pos.x = cvs.width - this.width
+			this.pos.y = mouse.y - this.height/2
 		}
 	}
 

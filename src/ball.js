@@ -8,8 +8,8 @@ class Ball {
     }
     this.velScale = 0.000001
     this.vel = {
-      x: 0,
-      y: 0
+      x: cvs.width*cvs.height*this.velScale,
+      y: cvs.width*cvs.height*this.velScale
     }
     
   }
@@ -42,18 +42,29 @@ class Ball {
   }
 
   roam() {
-    this.vel.x = cvs.width*cvs.height*this.velScale
-    this.vel.y = cvs.width*cvs.height*this.velScale
+    this.vel.x = cvs.width*cvs.height*this.velScale*Math.sign(this.vel.x)
+    this.vel.y = cvs.width*cvs.height*this.velScale*Math.sign(this.vel.y)
 
     this.pos.x += this.vel.x
     this.pos.y -= this.vel.y
+
+    this.ifPaddle_Repel()
   }
 
+  ifPaddle_Repel() {
+    if(isCollision(this, this.game.paddleRight)) {
+      this.pos.x = this.game.paddleRight.pos.x - this.radius
+      this.vel.x *= -1 
+    }
+  }
+
+  /*
   repel(object) {
     let collisionVect = {
       start: (this.pos.x, this.pos.y),
       end: (0,0)
     }
   }
+  */
 }
 
