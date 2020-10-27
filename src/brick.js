@@ -15,10 +15,9 @@ class Brick {
   }
 
   update(dt) {
-    if(isCollision(game.ball, this)) {
-        console.log("hit!")
+    if(isCollision(this.game.ball, this)) {
         this.isHit = true //TODO: remove from gameObjs
-        //repel(ball, brick) //updates ball.vel TODO
+        repel(this.game.ball, this) //updates ball.vel TODO
     }
   }
 

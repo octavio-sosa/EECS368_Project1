@@ -26,7 +26,6 @@ class Paddle {
       this.game.state === GSTATE.TEE_OFF) {
       repel(this.game.ball, this)  
     }
-
 	}
 
 	draw(ctx) {

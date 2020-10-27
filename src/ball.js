@@ -11,12 +11,11 @@ class Ball {
       x: cvs.width*cvs.height*this.velScale,
       y: cvs.width*cvs.height*this.velScale
     }
-    
   }
 
   update(dt) {
-    this.radius = cvs.width*cvs.height*0.000005
-    //this.radius = cvs.width*cvs.height*0.000002
+    //this.radius = cvs.width*cvs.height*0.000005
+    this.radius = cvs.width*cvs.height*0.000003
 
     if(this.game.state === GSTATE.TEE) {
       this.tee()
@@ -47,26 +46,6 @@ class Ball {
 
     this.pos.x -= this.vel.x
     this.pos.y -= this.vel.y
-
-    //this.ifPaddle_Repel()
   }
-
-/*
-  ifPaddle_Repel() {
-    if(isCollision(this, this.game.paddleRight)) {
-      this.pos.x = this.game.paddleRight.pos.x - this.radius
-      this.vel.x *= -1 
-    }
-  }
-  */
-
-  /*
-  repel(object) {
-    let collisionVect = {
-      start: (this.pos.x, this.pos.y),
-      end: (0,0)
-    }
-  }
-  */
 }
 
