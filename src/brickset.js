@@ -29,9 +29,7 @@ class Brickset {
 
   }
 
-  genBlockTriple(rule, triBlocks) {
-    let genBlocks = [0, 0, 0]
-
+  genRuleResult(rule, triBlocks) {
     let bits = ' '
     for(let i = 0; i < triBlocks.length; i++) {
       bits += triBlocks[i]
@@ -40,9 +38,7 @@ class Brickset {
     let bitsVal = parseInt(bits, 2) //convert bit word to int
     let result = rule.result[bitsVal]
 
-    genBlocks[1] = result
-
-    return genBlocks
+    return result
   }
 
   genMatrix(ruleName) {
@@ -71,12 +67,12 @@ class Brickset {
     for(let i = 1; i < this.setSize.rows; i++) { //all rows but first
       for(let j = 0; j <= this.setSize.cols-3; j++) { //end 3 blocks from end
         let triBlocks = row.slice(j, j+3)
-        let genTriBlocks = this.genBlockTriple(rule, triBlocks)
-        nextRow[j+1] = genTriBlocks[1]
+        let result = this.genRuleResult(rule, triBlocks)
+        nextRow[j+1] = result
       }
       matrix.push([...nextRow])
       row = [...nextRow]
-      nextRow.fill(0)
+      nextRow.fill(0) //clear 
     }
 
     return matrix
