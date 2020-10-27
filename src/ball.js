@@ -24,13 +24,6 @@ class Ball {
       this.roam()
     }
 
-    this.game.bricks.forEach( brick => {
-      if( this.isCollision(brick)) {
-        console.log("hit!")
-        brick.isHit = true //TODO: remove from gameObjs
-        //repel(this, brick) //updates this.vel TODO
-      }
-    })
   }
 
   draw(ctx) {
@@ -54,54 +47,6 @@ class Ball {
 
     this.pos.x += this.vel.x
     this.pos.y -= this.vel.y
-  }
-
-  isCollision(object) {
-    let objSize = {
-      width: object.width,
-      h: object.height
-    }
-
-    let objPos = {
-      start: (object.pos.x, object.pos.y),
-      end: (object.pos.x+objSize.width, object.pos.y+objSize.height),
-    }
-
-    let ballTan = {
-      upper: this.pos.y-this.radius,
-      lower: this.pos.y+this.radius,
-      left: this.pos.x-this.radius,
-      right: this.pos.x+this.radius
-    }
-
-    let objSide = {
-      upper: objPos.start[1],
-      lower: objPos.end[1],
-      left: objPos.start[0],
-      right: objPos.end[0]
-    }
-
-    /*
-    let isInWidthSpan = this.pos.x+this.radius >= objPos.start[0] &&
-
-    let isInWidthSpan = this.pos.x+this.radius >= objPos.start[0] &&
-                    this.pos.x-this.radius <= objPos.end[0]
-
-    let isInHeightSpan = this.pos.y+this.radius >= objPos.start[1] &&
-                     this.pos.y-this.radius <= objPos.end[1]
-    
-    console.log("isInWidthSpan: ", isInWidthSpan)
-    console.log("isInHeightSpan: ", isInHeightSpan)
-    */
-
-    if(ballTan.right >= objSide.left &&
-      ballTan.left <= objSide.right &&
-      ballTan.lower <= objSide.upper &&
-      ballTan.upper <= objSide.lower) {
-      return true
-    } else {
-      return false
-    }
   }
 
   repel(object) {
