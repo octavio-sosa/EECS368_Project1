@@ -1,5 +1,6 @@
 class Paddle {
-	constructor(type) {
+	constructor(game, type) {
+    this.game = game
 		this.width = 0
 		this.height = 0
 		this.type = type
@@ -20,6 +21,11 @@ class Paddle {
     }
 
 		this.movePaddle()
+
+    if(isCollision(this.game.ball, this) && 
+      this.game.state === GSTATE.TEE_OFF) {
+      repel(this.game.ball, this)  
+    }
 
 	}
 

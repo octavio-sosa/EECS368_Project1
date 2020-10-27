@@ -16,10 +16,10 @@ class Game {
 
     this.gameObjs = []
 
-    this.paddleFloor = new Paddle('floor')
-		this.paddleCeil = new Paddle('ceiling')
-		this.paddleLeft = new Paddle('leftWall')
-		this.paddleRight = new Paddle('rightWall')
+    this.paddleFloor = new Paddle(this, 'floor')
+		this.paddleCeil = new Paddle(this, 'ceiling')
+		this.paddleLeft = new Paddle(this, 'leftWall')
+		this.paddleRight = new Paddle(this, 'rightWall')
     this.ball = new Ball(this)
 
     let rule = '90'
