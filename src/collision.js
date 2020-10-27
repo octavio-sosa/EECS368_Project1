@@ -60,8 +60,6 @@ function repel(ball, gameObj) {
            ball.pos.x <= objSide.right
   }
 
-  console.log("hitObjSide.left: ", hitObjSide.left)
-
 /*
   let hitObjCorner = {
     upper: ballTan.right >= objSide.left &&
