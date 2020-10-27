@@ -3,13 +3,14 @@ class Brickset {
     this.game = game
     this.rule = rule
     this.rules = this.getRules()
+    this.scale = 0.075
     this.pos = {
-      x: cvs.width*0.01,
-      y: cvs.width*0.01
+      x: cvs.width*this.scale,
+      y: cvs.width*this.scale
     }
 
-    this.widthPix = cvs.width - 2*cvs.width*0.01
-    this.heightPix = cvs.width - 2*cvs.width*0.01
+    this.widthPix = cvs.width - 2*cvs.width*this.scale
+    this.heightPix = cvs.width - 2*cvs.width*this.scale
 
     this.brickSize = {
       width: cvs.height*0.0075,
