@@ -1,12 +1,7 @@
 function isCollision(ball, gameObj) {
-  let objSize = {
-    width: gameObj.width,
-    h: gameObj.height
-  }
-
   let objPos = {
     start: (gameObj.pos.x, gameObj.pos.y),
-    end: (gameObj.pos.x+objSize.width, gameObj.pos.y+objSize.height),
+    end: (gameObj.pos.x+gameObj.width, gameObj.pos.y+gameObj.height),
   }
 
   let ballTan = {
@@ -38,9 +33,10 @@ function isCollision(ball, gameObj) {
 
   if(ballTan.right >= objSide.left &&
     ballTan.left <= objSide.right &&
-    ballTan.lower <= objSide.upper &&
+    ballTan.lower >= objSide.upper &&
     ballTan.upper <= objSide.lower) {
     return true
+    console.log("Hit!")
   } else {
     return false
   }

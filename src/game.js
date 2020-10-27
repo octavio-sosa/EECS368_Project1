@@ -34,6 +34,12 @@ class Game {
     if(this.state === GSTATE.RUNNING ||
     this.state === GSTATE.TEE ||
     this.state === GSTATE.TEE_OFF) {
+      this.bricks = this.bricks.filter(brick => !brick.isHit)
+
+      this.gameObjs = [this.paddleFloor, this.paddleCeil,
+                      this.paddleLeft, this.paddleRight,
+                      this.ball, ...this.bricks]
+
       this.gameObjs.forEach(obj => obj.update(dt))
     }
   }
