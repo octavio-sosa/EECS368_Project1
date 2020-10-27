@@ -25,18 +25,9 @@ class Game {
     let rule = '90'
     this.brickset = new Brickset(this, rule)
     this.bricks = this.brickset.bricks
-    //this.brick = new Brick(this, {x: 10, y: 10}, '#e86ce0')
     this.gameObjs = [this.paddleFloor, this.paddleCeil,
                     this.paddleLeft, this.paddleRight,
                     this.ball, ...this.bricks]
-    /*
-      this.gameObjs.push(this.paddleFloor)
-      this.gameObjs.push(this.paddleCeil)
-      this.gameObjs.push(this.paddleLeft)
-      this.gameObjs.push(this.paddleRight)
-      this.gameObjs.push(this.ball)
-      this.gameObjs.push(this.brick)
-    */
   }
 
   update(dt) {
