@@ -112,7 +112,12 @@ class Brickset {
       //index: binary num, value: resulting middle val
     }
 
-    rules.push(rule_90)
+    let rule_30 = {
+      name: '30',
+      result: [0, 1, 1, 1, 1, 0, 0, 0]
+    }
+
+    rules.push(rule_90, rule_30)
 
     return rules
   }
