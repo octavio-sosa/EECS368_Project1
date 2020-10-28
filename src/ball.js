@@ -6,7 +6,7 @@ class Ball {
       x: 0,
       y: 0
     }
-    this.velScale = 0.000002
+    this.velScale = 0.000003
     this.vel = {
       x: cvs.width*cvs.height*this.velScale,
       y: cvs.width*cvs.height*this.velScale
@@ -15,7 +15,7 @@ class Ball {
 
   update(dt) {
     //this.radius = cvs.width*cvs.height*0.000005
-    this.radius = cvs.width*cvs.height*0.000003
+    this.radius = cvs.width*cvs.height*0.000009
 
     if(this.game.state === GSTATE.TEE) {
       this.tee()
@@ -29,7 +29,12 @@ class Ball {
     ctx.beginPath()
     ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2*Math.PI) 
     ctx.fillStyle = '#1645f5'
-    
+    ctx.fill()
+    ctx.closePath()
+
+    //trail
+    ctx.arc(this.pos.x, this.pos.y, this.radius/3, 0, 2*Math.PI) 
+    ctx.fillStyle = '#1645f5'
     ctx.fill()
     ctx.closePath()
   }
