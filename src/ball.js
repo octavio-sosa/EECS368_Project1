@@ -31,12 +31,6 @@ class Ball {
     ctx.fillStyle = '#1645f5'
     ctx.fill()
     ctx.closePath()
-
-    //trail
-    ctx.arc(this.pos.x, this.pos.y, this.radius/3, 0, 2*Math.PI) 
-    ctx.fillStyle = '#1645f5'
-    ctx.fill()
-    ctx.closePath()
   }
 
   tee() {
