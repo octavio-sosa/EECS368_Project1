@@ -60,17 +60,33 @@ function repel(ball, gameObj) {
            ball.pos.x <= objSide.right
   }
 
-/*
-  let hitObjCorner = {
-    upper: ballTan.right >= objSide.left &&
-          ballTan.left < objSide.right &&
-          ball.pos.y <= objSide.lower &&
-          ball.pos.y >= objSide.upper,
-    right: ballTan.left <= objSide.right,
-    upper: ballTan.lower >= objSide.upper,
-    lower: ballTan.upper <= objSide.lower
-  }
-*/
+let hitObjCorner = {
+  upperLeft: ballTan.right >= objSide.left &&
+             ballTan.right < objSide.right &&
+             ballTan.lower >= objSide.upper &&
+             ballTan.lower < objSide.lower &&
+             ball.pos.y < objSide.upper &&
+             ball.pos.x < objSide.left,
+  upperRight: ballTan.left <= objSide.right &&
+              ballTan.left > objSide.left &&
+              ballTan.lower >= objSide.upper &&
+              ballTan.lower < objSide.lower &&
+              ball.pos.y < objSide.upper &&
+              ball.pos.x > objSide.right,
+  lowerLeft: ballTan.right >= objSide.left && //lowerLeft may be causeing issues
+             ballTan.right < objSide.right &&
+             ballTan.upper <= objSide.lower &&
+             ballTan.upper > objSide.upper &&
+             ball.pos.y > objSide.lower &&
+             ball.pos.x < objSide.left,
+  lowerRight: ballTan.left <= objSide.right && //lowerRight may be causing issues
+              ballTan.left > objSide.left &&
+              ballTan.upper <= objSide.lower &&
+              ballTan.upper > objSide.upper &&
+              ball.pos.y > objSide.lower &&
+              ball.pos.x > objSide.right
+}
+
   if(hitObjSide.left) {
     ball.pos.x = objSide.left-ball.radius
     ball.vel.x *= -1
@@ -83,21 +99,28 @@ function repel(ball, gameObj) {
   } else if (hitObjSide.lower) {
     ball.pos.y = objSide.lower+ball.radius
     ball.vel.y *= -1
-
+  } else if(hitObjCorner.upperLeft) {
+    ball.pos.x = objSide.left - ball.radius
+    ball.pos.y = objSide.upper - ball.radius
+    ball.vel.x *= -1
+    ball.vel.y *= -1
+  } else if(hitObjCorner.upperRight) {
+    ball.pos.x = objSide.right + ball.radius
+    ball.pos.y = objSide.upper - ball.radius
+    ball.vel.x *= -1
+    ball.vel.y *= -1
+  } else if (hitObjCorner.lowerLeft) {
+    ball.pos.x = objSide.left - ball.radius
+    ball.pos.y = objSide.lower + ball.radius
+    ball.vel.x *= -1
+    ball.vel.y *= -1
+  } else if (hitObjSide.lowerRight) {
+    ball.pos.x = objSide.right + ball.radius
+    ball.pos.y = objSide.lower + ball.radius
+    ball.vel.x *= -1
+    ball.vel.y *= -1
   } else {
-
+    ball.vel.x *= -1
+    ball.vel.y *= -1
   }
-/*
-  if(hitObjCorner.upper.left) {
-
-  } else if(hitObjCorner.upper.right) {
-
-  } else if (hitObjCorner.lower.left) {
-
-  } else if (hitObjSide.lower.right) {
-
-  } else {
-
-  }
-*/
 }

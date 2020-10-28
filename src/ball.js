@@ -6,7 +6,7 @@ class Ball {
       x: 0,
       y: 0
     }
-    this.velScale = 0.000001
+    this.velScale = 0.000002
     this.vel = {
       x: cvs.width*cvs.height*this.velScale,
       y: cvs.width*cvs.height*this.velScale
@@ -44,8 +44,8 @@ class Ball {
     this.vel.x = cvs.width*cvs.height*this.velScale*Math.sign(this.vel.x)
     this.vel.y = cvs.width*cvs.height*this.velScale*Math.sign(this.vel.y)
 
-    this.pos.x -= this.vel.x
-    this.pos.y -= this.vel.y
+    this.pos.x += this.vel.x
+    this.pos.y += this.vel.y
   }
 }
 

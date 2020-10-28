@@ -13,10 +13,10 @@ class Paddle {
 
 	update(dt) {
 		if (this.type == 'leftWall' || this.type == 'rightWall') {
-			this.height = cvs.width*0.05
+			this.height = cvs.width*0.1
       this.width = cvs.height*0.0075
 		} else {
-      this.width = cvs.width*0.05
+      this.width = cvs.width*0.1
       this.height = cvs.height*0.0075
     }
 
