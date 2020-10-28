@@ -2,8 +2,8 @@ class Brick {
   constructor(game, pos, color) {
     this.game = game
 
-    this.width = cvs.height*0.0075
-    this.height = cvs.height*0.0075
+    this.width = cvs.height*0.01
+    this.height = cvs.height*0.01
 
     this.pos = {
       x: pos.x,

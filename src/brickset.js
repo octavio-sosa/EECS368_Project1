@@ -10,11 +10,11 @@ class Brickset {
     }
 
     this.widthPix = cvs.width - 2*cvs.width*this.scale
-    this.heightPix = cvs.width - 2*cvs.width*this.scale
+    this.heightPix = cvs.height - 2*cvs.height*this.scale
 
     this.brickSize = {
-      width: cvs.height*0.0075,
-      height: cvs.height*0.0075
+      width: cvs.height*0.01,
+      height: cvs.height*0.01
     }
 
     this.setSize = {
