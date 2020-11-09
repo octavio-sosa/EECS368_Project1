@@ -5,7 +5,8 @@ const OBJ_KEYS = {
 const GSTATE = {
   MENU: 0,
   TEE: 1,
-  RUNNING: 2
+  RUNNING: 2,
+  LOST: 3
 }
 
 class Game {
@@ -20,10 +21,15 @@ class Game {
 		this.paddleLeft = new Paddle(this, 'leftWall')
 		this.paddleRight = new Paddle(this, 'rightWall')
     this.ball = new Ball(this)
+    this.screen = new Screen(this)
 
-    let rule = '90'
-    //let rule = '30'
-    this.brickset = new Brickset(this, rule)
+    if(Math.random() <= 0.5){
+      this.rule = '90'
+    } else {
+      this.rule = '30'
+    }
+
+    this.brickset = new Brickset(this, this.rule)
     this.bricks = this.brickset.bricks
     this.gameObjs = [this.paddleFloor, this.paddleCeil,
                     this.paddleLeft, this.paddleRight,
@@ -40,10 +46,24 @@ class Game {
                       this.ball, ...this.bricks]
 
       this.gameObjs.forEach(obj => obj.update(dt))
+
+      console.log('game state: ', this.state)
+    } else if(this.state === GSTATE.LOST) {
+      this.screen.update(dt)
+      
+      if(Math.random() <= 0.5){
+        this.rule = '90'
+      } else {
+        this.rule = '30'
+      }
+
+      this.brickset = new Brickset(this, this.rule)
+      this.bricks = this.brickset.bricks
     }
   }
 
   draw(ctx) {
     this.gameObjs.forEach(obj => obj.draw(ctx))
+    this.screen.draw(ctx)
   }
 }

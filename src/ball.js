@@ -19,12 +19,13 @@ class Ball {
 
     if(this.game.state === GSTATE.RUNNING &&
       this.isOutOfBounds()){
-      this.game.state = GSTATE.TEE
+      //console.log('lost')
+      this.game.state = GSTATE.LOST
     }
 
     if(this.game.state === GSTATE.TEE) {
       this.tee()
-    } else if(this.game.state = GSTATE.RUNNING) {
+    } else if(this.game.state === GSTATE.RUNNING) {
       this.roam()
     }
 
@@ -60,6 +61,7 @@ class Ball {
   isOutOfBounds(){
     if(this.pos.x < 0 || this.pos.x > cvs.width ||
       this.pos.y < 0 || this.pos.y > cvs.height){
+      //console.log('out of bounds')
       return true
     } else {
       return false
