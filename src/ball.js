@@ -17,9 +17,14 @@ class Ball {
     //this.radius = cvs.width*cvs.height*0.000005
     this.radius = cvs.width*cvs.height*0.000009
 
+    if(this.game.state === GSTATE.RUNNING &&
+      this.isOutOfBounds()){
+      this.game.state = GSTATE.TEE
+    }
+
     if(this.game.state === GSTATE.TEE) {
       this.tee()
-    } else if(this.game.state = GSTATE.TEE_OFF) {
+    } else if(this.game.state = GSTATE.RUNNING) {
       this.roam()
     }
 
@@ -37,6 +42,11 @@ class Ball {
     let paddle = this.game.gameObjs[OBJ_KEYS.PADDLE_FLOOR]
     this.pos.x = paddle.pos.x + paddle.width/2
     this.pos.y = cvs.height - paddle.height - this.radius
+
+    this.vel = {
+      x: cvs.width*cvs.height*this.velScale,
+      y: cvs.width*cvs.height*this.velScale
+    }
   }
 
   roam() {
@@ -45,6 +55,15 @@ class Ball {
 
     this.pos.x += this.vel.x
     this.pos.y += this.vel.y
+  }
+
+  isOutOfBounds(){
+    if(this.pos.x < 0 || this.pos.x > cvs.width ||
+      this.pos.y < 0 || this.pos.y > cvs.height){
+      return true
+    } else {
+      return false
+    }
   }
 }
 

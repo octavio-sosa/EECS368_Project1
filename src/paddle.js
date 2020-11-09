@@ -23,7 +23,7 @@ class Paddle {
 		this.movePaddle()
 
     if(isCollision(this.game.ball, this) && 
-      this.game.state === GSTATE.TEE_OFF) {
+      this.game.state === GSTATE.RUNNING) {
       repel(this.game.ball, this)  
     }
 	}

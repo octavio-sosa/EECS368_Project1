@@ -5,8 +5,7 @@ const OBJ_KEYS = {
 const GSTATE = {
   MENU: 0,
   TEE: 1,
-  TEE_OFF: 2,
-  RUNNING: 3
+  RUNNING: 2
 }
 
 class Game {
@@ -33,8 +32,7 @@ class Game {
 
   update(dt) {
     if(this.state === GSTATE.RUNNING ||
-    this.state === GSTATE.TEE ||
-    this.state === GSTATE.TEE_OFF) {
+    this.state === GSTATE.TEE) {
       this.bricks = this.bricks.filter(brick => !brick.isHit)
 
       this.gameObjs = [this.paddleFloor, this.paddleCeil,
