@@ -22,8 +22,8 @@ class Game {
 		this.paddleRight = new Paddle(this, 'rightWall')
     this.ball = new Ball(this)
 
-    //let rule = '90'
-    let rule = '30'
+    let rule = '90'
+    //let rule = '30'
     this.brickset = new Brickset(this, rule)
     this.bricks = this.brickset.bricks
     this.gameObjs = [this.paddleFloor, this.paddleCeil,
