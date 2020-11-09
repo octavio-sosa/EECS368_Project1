@@ -12,11 +12,13 @@ class Screen {
   update(dt) {
     if(this.game.state === GSTATE.LOST) {
       this.text = 'You lost. Press SPACE to restart'
+    } else if (this.game.state === GSTATE.WON) {
+      this.text = 'You WON! Press SPACE to restart'
     }
   }
 
   draw(ctx){
-    if(this.game.state === GSTATE.LOST){
+    if(this.game.state === GSTATE.LOST || this.game.state === GSTATE.WON){
       ctx.fillStyle = this.pageColor
       ctx.rect(0, 0, this.width, this.height)
       ctx.fill()

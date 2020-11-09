@@ -6,7 +6,8 @@ const GSTATE = {
   MENU: 0,
   TEE: 1,
   RUNNING: 2,
-  LOST: 3
+  LOST: 3,
+  WON: 4
 }
 
 class Game {
@@ -47,8 +48,10 @@ class Game {
 
       this.gameObjs.forEach(obj => obj.update(dt))
 
-      console.log('game state: ', this.state)
-    } else if(this.state === GSTATE.LOST) {
+      if(this.bricks.length === 0) {
+        this.state = GSTATE.WON
+      }
+    } else if(this.state === GSTATE.LOST || this.state === GSTATE.WON) {
       this.screen.update(dt)
       
       if(Math.random() <= 0.5){

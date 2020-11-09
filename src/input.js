@@ -15,7 +15,8 @@ window.addEventListener('mousemove', e => {
 window.addEventListener('keydown', e => {
   if(e.code == 'Space' && game.state === GSTATE.TEE) {
     game.state = GSTATE.RUNNING
-  } else if (e.code == 'Space' && game.state === GSTATE.LOST) {
+  } else if (e.code == 'Space' && 
+          (game.state === GSTATE.LOST || game.state === GSTATE.WON)) {
     game.state = GSTATE.TEE
   }
 })
